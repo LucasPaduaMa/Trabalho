@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Minhas Tarefas</h2>
+<a href="{{ url_for('create_task') }}" class="btn btn-success mb-3">Criar Tarefa</a>
+<ul class="list-group">
+    {% for task in tasks %}
+    <li class="list-group-item">
+        <h5>{{ task.title }}</h5>
+        <p>{{ task.description }}</p>
+        <small>Status: {{ task.status }}</small>
+        <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn btn-danger btn-sm float-end">Excluir</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
